@@ -26,3 +26,25 @@ console.log('users_under_30: ', users_under_30.length); // users_under_30:  4
 * 기존의 배열을 수정하지않고, `func`조건에 맞는 새로운 배열을 return
 * 항상 동일하게 동작하는 함수를 만들고, 넘겨진 인자에만 의존한다.
 * 동일한 인자가 들어온 경우엔 동일한 결과값을 리턴한다.
+
+
+## Map
+
+```
+function map(list, interatee) {
+    const new_list = [];
+    for(let i = 0; i < list.length; i++) {
+        new_list.push(interatee(list[i]));
+    }
+    return new_list;
+}
+
+const users_under_30_age = map(users_under_30, function(user) { return user.age; });
+console.log('users_under_30_age: ', users_under_30_age); // users_under_30_ages:  [ 25, 28, 27, 24 ]
+```
+
+1. map 함수는 인자로 배열과 반복문을 받는다.
+2. list의 length만큼 루프를 돌고
+3. interatee 조건에 따라 새로운 배열 new_list에 값을 push한다.
+4. 기존의 인자로 받은 list는 변경되지 않고, 새로운 값의 배열을 반환한다.
+
