@@ -1,10 +1,10 @@
 ## Filter
 
 ```
-function filter(list, func) {
+function filter(list, predicate) {
   const new_list = [];
   for(let i = 0; i < list.length; i++) {
-    if (func(list[i])) {
+    if (predicate(list[i])) {
       new_list.push(list[i]);
     }
   }
@@ -17,9 +17,9 @@ console.log('users_under_30: ', users_under_30.length); // users_under_30:  4
 
 1. filter 함수는 인자로 배열과 선언문을 받는다.
 2. list의 length만큼 루프를 돌고
-3. 선언문에 list배열의 객체 하나씩 대입되어서 `true`인 경우 `new_list` 배열에 출력
+3. predicate 보조함수에 list배열의 객체 하나씩 대입되어서 `true`인 경우 `new_list` 배열에 출력
 
-인자로 받는 `func`에서는 `true/false`의 결과값만 filter 함수에 전달해준다.
+인자로 받는 `predicate`에서는 `true/false`의 결과값만 filter 함수에 전달해준다.
 
 
 ## Map
@@ -78,6 +78,21 @@ function(list, predicate) {
 
 ### 클로저
 
+
+### 콜백함수
+
+* ajax와 같이 서버와 통신할 때(비동기) 사용한다.
+* 콜백함수는 한번 실행 후 컨텍스트를 돌려준다.
+* 많은 사람들이 함수에 익명함수를 인자로 넘겨주는 것을 모두 콜백이라고 칭하지만 사용하는 곳에 따라 명칭을 다르게 하자.
+
+```
+button.click(function() {
+....
+}) // 콜백함수가 아니라 이벤트리스너
+
+예제에서 살펴본 filter, find 함수에서는 predicate.
+map함수에서는 interatee
+```
 
 ### 고차함수
 
